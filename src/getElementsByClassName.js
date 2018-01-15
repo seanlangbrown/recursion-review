@@ -8,14 +8,14 @@ var getElementsByClassName = function(className, node) {
   var results = [];
   node = node || document.body;
 
-  if (node.classList.contains(className)) {
+  if (node.classList && node.classList.contains(className)) {
     results.push(node);
   }
   
 
   if (node.childNodes.length) {
     for (var i = 0; i < node.childNodes.length; i++) {
-      results.concat(getElementsByClassName(className, node.childNodes[i]));
+      results = results.concat(getElementsByClassName(className, node.childNodes[i]));
     }
     
   }
